@@ -9,10 +9,14 @@ public class PlayerController : MonoBehaviour
     public KeyCode moveForward;
     public KeyCode moveBack;
 
+    public float health = 1;
+
+    public BaseWeapon attack;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        attack = GetComponent<BaseWeapon>();
     }
 
     // Update is called once per frame
@@ -38,9 +42,29 @@ public class PlayerController : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector2(-5, 0);
         }
 
-        if ((!Input.GetKey(moveDown)) && (!Input.GetKey(moveUp)) && (!Input.GetKey(moveForward)) && (!Input.GetKey(moveBack)))
+        if (Input.GetMouseButtonDown(0))
+        {
+            GetComponent<AudioSource>().Play();
+            attack.Shoot();
+        }
+
+        if((!Input.GetKey(moveUp) && !Input.GetKey(moveDown) && !Input.GetKey(moveForward) && !Input.GetKey(moveBack)))
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
+    }
+
+    //private void OnCollisionEnter2D(Collision collision)
+    //{
+       // if(collision.gameObject.name.Contains("Bullet"))
+       // {
+           // Destroy(collision.gameObject);
+          //  TakeDamage(20);
+       // }
+   // }
+
+    public void TakeDamage(float damageAmt)
+    {
+        health -= damageAmt;
     }
 }
