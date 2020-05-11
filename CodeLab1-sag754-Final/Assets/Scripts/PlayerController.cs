@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            GetComponent<AudioSource>().Play();
             attack.Shoot();
         }
 

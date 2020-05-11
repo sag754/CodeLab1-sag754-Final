@@ -8,7 +8,6 @@ public class BaseWeapon : MonoBehaviour
     // Start is called before the first frame update
     public Transform firepoint;
     public GameObject bulletPrefab;
-    public AudioSource firesound;
 
     public virtual void Shoot()
     {
