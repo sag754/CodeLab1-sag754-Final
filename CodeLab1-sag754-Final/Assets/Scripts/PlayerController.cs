@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     public KeyCode moveDown;
     public KeyCode moveForward;
     public KeyCode moveBack;
+    public GameObject firePoint;
+    public GameObject laserPrefab;
+    public GameObject bulletPrefab;
 
     public float health = 1;
 
@@ -52,15 +55,6 @@ public class PlayerController : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
     }
-
-    //private void OnCollisionEnter2D(Collision collision)
-    //{
-       // if(collision.gameObject.name.Contains("Bullet"))
-       // {
-           // Destroy(collision.gameObject);
-          //  TakeDamage(20);
-       // }
-   // }
 
     public void TakeDamage(float damageAmt)
     {

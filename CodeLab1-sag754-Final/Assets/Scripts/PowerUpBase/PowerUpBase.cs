@@ -6,6 +6,6 @@ public class PowerUpBase : MonoBehaviour
 {
     public virtual void Updgrade(GameObject player)
     {
-
+        
     }
 }

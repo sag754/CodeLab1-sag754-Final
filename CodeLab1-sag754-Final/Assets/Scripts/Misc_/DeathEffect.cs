@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class DeathEffect : MonoBehaviour
 {
-    public float destructTimer = .1f;
+    public float destructTimer = .12f;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         Invoke("DestroySelf", destructTimer);
     }
 

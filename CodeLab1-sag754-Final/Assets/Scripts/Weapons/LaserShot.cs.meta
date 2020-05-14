@@ -5,9 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - firepoint: {instanceID: 0}
-  - bulletPrefab: {instanceID: 0}
-  - firesound: {instanceID: 0}
-  - impactEffect: {fileID: 2418310835072111234, guid: 148efcf2ceae2cf48ab7687829b91bc3,
+  - bulletPrefab: {fileID: 1289070707544716155, guid: 816bd7ddf78fa6946bdda65ce753b1bd,
       type: 3}
   executionOrder: 0
   icon: {instanceID: 0}

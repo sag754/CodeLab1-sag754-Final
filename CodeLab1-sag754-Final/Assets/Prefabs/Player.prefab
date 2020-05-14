@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 4819198031669172175}
   - component: {fileID: 4819198031669172174}
   - component: {fileID: 4819198031669172169}
-  - component: {fileID: 1575796737692206344}
+  - component: {fileID: 8052347515321050696}
   - component: {fileID: 4819198031669172172}
   - component: {fileID: 3734021246350022814}
   m_Layer: 0
@@ -234,9 +234,14 @@ MonoBehaviour:
   moveDown: 115
   moveForward: 100
   moveBack: 97
+  firePoint: {fileID: 447663325046100400}
+  laserPrefab: {fileID: 1289070707544716155, guid: 816bd7ddf78fa6946bdda65ce753b1bd,
+    type: 3}
+  bulletPrefab: {fileID: 5156922041456956891, guid: 8eacc803df71b12448cfc4085c22b18b,
+    type: 3}
   health: 1
   attack: {fileID: 0}
---- !u!114 &1575796737692206344
+--- !u!114 &8052347515321050696
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

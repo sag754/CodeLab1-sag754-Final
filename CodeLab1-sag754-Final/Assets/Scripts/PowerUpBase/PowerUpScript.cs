@@ -5,11 +5,17 @@ using UnityEngine;
 public class PowerUpScript : MonoBehaviour
 {
     Vector2 startPos;
-    PowerUpBase[] powers;
+    PowerUpBase power;
+    public float yRange = 1;
+    public float speed = 2;
+
+    Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
-        powers = GetComponents<PowerUpBase>();
+        Reset();
+        power = GetComponent<PowerUpBase>();
         startPos = transform.position;
     }
 
@@ -24,16 +30,32 @@ public class PowerUpScript : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void Reset()
+    {
+        if(rb == null)
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
+
+        transform.position = new Vector2(10,
+            Random.Range(-yRange, yRange));
+
+        rb.velocity = Vector2.left * speed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject hitObj = collision.gameObject;
         if (hitObj.name.Equals("Player"))
-        { //if the powerUp hit the ship
-            int randomPower = Random.Range(0, powers.Length);
-            powers[randomPower].Updgrade(hitObj); //give the ship a random powerUp
-        }
+        { //if the powerUp hit the shi
+            power.Updgrade(hitObj); //give the ship a random powerUp
 
-        transform.position = startPos; //reset to startPos
-        GetComponent<Rigidbody2D>().velocity = Vector2.zero; //remove velocity
+            Destroy(gameObject);
+        } 
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }
