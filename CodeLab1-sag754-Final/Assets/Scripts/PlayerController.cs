@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public GameObject firePoint;
     public GameObject laserPrefab;
     public GameObject bulletPrefab;
+    public AudioSource audioSource;
 
     public float health = 1;
 
@@ -59,5 +60,13 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damageAmt)
     {
         health -= damageAmt;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    { 
+        if (collision.gameObject.tag == "PowerUp")
+        { //if the powerUp hit the shi
+            audioSource.Play();
+        }
     }
 }
