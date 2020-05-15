@@ -6,6 +6,11 @@ public class LaserShot : BaseWeapon
 {
     public override void Shoot()
     {
-        Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
+
+        var countOfExistingBullets = GameObject.FindGameObjectsWithTag("Bullet").Length;
+        if (countOfExistingBullets < 1 && Input.GetMouseButtonDown(0))
+        {
+            Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
+        }
     }
 }

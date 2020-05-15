@@ -11,6 +11,11 @@ public class BaseWeapon : MonoBehaviour
 
     public virtual void Shoot()
     {
-        Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
+
+        var countOfExistingBullets = GameObject.FindGameObjectsWithTag("Bullet").Length;
+        if (countOfExistingBullets < 3 && Input.GetMouseButtonDown(0))
+        {
+            Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
+        }
     }
 }
