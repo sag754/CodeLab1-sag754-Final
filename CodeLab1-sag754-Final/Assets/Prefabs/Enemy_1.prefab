@@ -47,6 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 40
+  initVelocity: {x: -10, y: 0, z: 0}
+  minX: 2
+  enemyBullet: {fileID: 7630177015141110736, guid: 7dd0253428e736a4c837f804d09d5ee9,
+    type: 3}
   deathEffect: {fileID: 1647424825044890653, guid: 41afd05bad5598948aeb123718d8fcf5,
     type: 3}
 --- !u!212 &6592850944746432539
@@ -87,7 +91,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: ac5394890d70bc341bc08d1b3a9b05d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

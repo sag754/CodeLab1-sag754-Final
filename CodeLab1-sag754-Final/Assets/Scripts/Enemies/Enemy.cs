@@ -9,12 +9,15 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     public float minX = 2;
 
+    public GameObject enemyBullet;
+
     public GameObject deathEffect;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = initVelocity;
+        InvokeRepeating("Fire", 1, 1); //call "Fire" every second
     }
 
     private void Update()
@@ -23,6 +26,14 @@ public class Enemy : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
         }
+    }
+
+    void Fire()
+    {
+        GameObject newBullet = Instantiate<GameObject>(enemyBullet); //create a new bullet prefab
+        Vector2 newPos = transform.position;
+        newPos.x -= 1f;
+        newBullet.transform.position = newPos; //put the bullet below the enemy
     }
 
     public void TakeDamage(int damage)
