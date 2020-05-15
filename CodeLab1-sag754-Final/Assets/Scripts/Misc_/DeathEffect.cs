@@ -9,7 +9,6 @@ public class DeathEffect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         Invoke("DestroySelf", destructTimer);
     }
 
@@ -18,6 +17,4 @@ public class DeathEffect : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
-
 }
