@@ -5,9 +5,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int health = 120;
-    public Vector3 initVelocity = new Vector3(-10, 0, 0);
+    public Vector3 initVelocity = new Vector3(1, 0, 0);
     private Rigidbody2D rb;
-    public float minX = 2;
+    public float minX = 10;
 
     public GameObject enemyBullet;
 
@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
     {
         GameObject newBullet = Instantiate<GameObject>(enemyBullet); //create a new bullet prefab
         Vector2 newPos = transform.position;
-        newPos.x -= 1f;
+        newPos.x -= 0f;
         newBullet.transform.position = newPos; //put the bullet below the enemy
     }
 
@@ -49,6 +49,11 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+
+    private void OnBecameInvisible()
+    {
         Destroy(gameObject);
     }
 }

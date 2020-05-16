@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 629514522151862892}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,6 +239,8 @@ MonoBehaviour:
   laserPrefab: {fileID: 1289070707544716155, guid: 816bd7ddf78fa6946bdda65ce753b1bd,
     type: 3}
   bulletPrefab: {fileID: 5156922041456956891, guid: 8eacc803df71b12448cfc4085c22b18b,
+    type: 3}
+  deathEffect: {fileID: 1647424825044890653, guid: 41afd05bad5598948aeb123718d8fcf5,
     type: 3}
   audioSource: {fileID: 629514522151862892}
   health: 1

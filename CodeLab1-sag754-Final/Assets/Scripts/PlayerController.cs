@@ -11,7 +11,10 @@ public class PlayerController : MonoBehaviour
     public GameObject firePoint;
     public GameObject laserPrefab;
     public GameObject bulletPrefab;
+    public GameObject deathEffect;
     public AudioSource audioSource;
+    public int moveX = 5;
+    public int moveY = 5;
 
     public float health = 1;
 
@@ -28,22 +31,22 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(moveUp))
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 5);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, moveY);
         }
 
         if (Input.GetKey(moveForward))
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(5, 0);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(moveX, 0);
         }
 
         if (Input.GetKey(moveDown))
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, -5);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, -moveY);
         }
 
         if (Input.GetKey(moveBack))
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-5, 0);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(-moveX, 0);
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -57,9 +60,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damageAmt)
+    public void TakeDamage(int damage)
     {
-        health -= damageAmt;
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Die();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -68,5 +76,11 @@ public class PlayerController : MonoBehaviour
         { //if the powerUp hit the shi
             audioSource.Play();
         }
+    }
+
+    void Die()
+    {
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

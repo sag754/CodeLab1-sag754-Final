@@ -2,27 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
-    public float speed = 20f;
-    public int damage = 10;
-    public Rigidbody2D rb;
+    public int damage = 100;
+    public float bulletSpeed = -1;
     public GameObject hitEffect;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        rb.velocity = transform.right * speed;
+        //gameObject.transform.position += transform.right * bulletSpeed;
     }
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (hitInfo.gameObject.tag == "Enemy")
+        if (hitInfo.gameObject.tag == "Player")
         {
-            EnemyScript enemy = hitInfo.GetComponent<EnemyScript>();
-            if (enemy != null)
+            PlayerController player = hitInfo.GetComponent<PlayerController>();
+            if (player != null)
             {
-                enemy.TakeDamage(damage);
+                player.TakeDamage(damage);
             }
 
             Instantiate(hitEffect, transform.position, transform.rotation);
