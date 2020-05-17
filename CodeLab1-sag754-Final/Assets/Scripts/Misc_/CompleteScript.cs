@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameOverScript : MonoBehaviour
+public class CompleteScript : MonoBehaviour
 {
-    public int JumpToLevel = 0;
+    public int JumpToLevel = 3;
 
     public static LevelForwarder instance;
 
 
     void Start()
     {
-        GameManager.gameInstance.points = 0;
-        Invoke("ReloadGame", 8f);
+        GameManager.points = 0;
+        Invoke("ReloadGame", 7f);
     }
 
     void ReloadGame()

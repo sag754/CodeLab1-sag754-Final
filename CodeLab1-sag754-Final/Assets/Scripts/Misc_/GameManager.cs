@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public int JumpToLevel = 2;
-    public int points = 0;
+    public static int points = 0;
 
     public AudioSource complete;
 

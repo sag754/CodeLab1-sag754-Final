@@ -66,7 +66,7 @@ public class EnemyScript : MonoBehaviour
 
         if (health <= 0)
         {
-            GameManager.gameInstance.points++;
+            GameManager.points++;
             Die();
         }
     }
