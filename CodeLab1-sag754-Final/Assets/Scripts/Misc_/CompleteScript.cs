@@ -13,12 +13,13 @@ public class CompleteScript : MonoBehaviour
     void Start()
     {
         Destroy(GameObject.FindWithTag("Enemy"));
-        GameManager.points = 0;
+        Destroy(GameObject.FindWithTag("Player"));
+        PlayerController.points = 0;
         Invoke("ReloadGame", 7f);
     }
 
     void ReloadGame()
-    {
+    { 
         SceneManager.LoadScene(JumpToLevel);
     }
 }

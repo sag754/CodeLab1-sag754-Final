@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,14 +17,28 @@ public class PlayerController : MonoBehaviour
     public AudioSource audioSource;
     public int moveX = 5;
     public int moveY = 5;
+    public Text objective;
 
     public float health = 1;
+    public static int points = 0;
 
     public BaseWeapon attack;
+    public static PlayerController playerInstance;
 
     // Start is called before the first frame update
     void Start()
     {
+        //set up the singleton
+        if (playerInstance == null)
+        { //if instance isn't set
+            playerInstance = this; //set it to this instance
+            DontDestroyOnLoad(gameObject); //Don't destory this gameObject
+        }
+        else
+        { //otherwise, if we have a singleton already
+            Destroy(gameObject); //Destroy this instance
+        }
+
         attack = GetComponent<BaseWeapon>();
     }
 
@@ -59,6 +74,10 @@ public class PlayerController : MonoBehaviour
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
+
+
+        objective.text = "DEFEAT: 50  /  " + PlayerController.points;
+
     }
 
     public void TakeDamage(int damage)

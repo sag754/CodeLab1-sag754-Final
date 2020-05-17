@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public int JumpToLevel = 2;
-    public static int points = 0;
+
+    public bool gameOver = false;
+    public bool gameComplete = false;
 
     public AudioSource complete;
 
@@ -32,19 +35,20 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(points == 1)
+        if(PlayerController.points == 50 && gameComplete == false)
         {
-            
+            gameComplete = true;
             Invoke("Complete", 1f);
         }
 
-        if(player == null)
+        if(PlayerController.playerInstance.health <= 0 && gameOver == false)
         {
-            Invoke("EndGame", 2f);
+            gameOver = true;
+            Invoke("GameOver", 2f);
         }
     }
 
-    void EndGame()
+    void GameOver()
     {
         SceneManager.LoadScene(JumpToLevel);
     }

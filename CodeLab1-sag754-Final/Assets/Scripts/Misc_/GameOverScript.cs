@@ -12,13 +12,13 @@ public class GameOverScript : MonoBehaviour
 
     void Start()
     {
-        Destroy(GameObject.FindWithTag("Enemy"));
-        GameManager.points = 0;
-        Invoke("ReloadGame", 8f);
+        PlayerController.points = 0;
+        Invoke("ReloadGame", 10f);
     }
 
     void ReloadGame()
     {
+        Destroy(GameObject.FindWithTag("Enemy"));
         SceneManager.LoadScene(JumpToLevel);
     }
 }
