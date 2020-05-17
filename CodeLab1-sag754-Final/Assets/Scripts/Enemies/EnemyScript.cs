@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Drawing;
 using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
@@ -16,7 +17,6 @@ public class EnemyScript : MonoBehaviour
     public GameObject hitEffect;
     
     public PlayerController target;
-    Vector2 aimDirection;
 
     Rigidbody2D rb;
 
@@ -66,6 +66,7 @@ public class EnemyScript : MonoBehaviour
 
         if (health <= 0)
         {
+            GameManager.gameInstance.points++;
             Die();
         }
     }
