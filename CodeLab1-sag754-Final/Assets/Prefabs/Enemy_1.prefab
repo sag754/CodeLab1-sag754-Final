@@ -50,10 +50,14 @@ MonoBehaviour:
   speed: 2
   bulletSpeed: 5
   health: 120
+  damage: 100
   enemyBullet: {fileID: 7630177015141110736, guid: 7dd0253428e736a4c837f804d09d5ee9,
     type: 3}
   deathEffect: {fileID: 1647424825044890653, guid: 41afd05bad5598948aeb123718d8fcf5,
     type: 3}
+  hitEffect: {fileID: 2418310835072111234, guid: 148efcf2ceae2cf48ab7687829b91bc3,
+    type: 3}
+  target: {fileID: 0}
 --- !u!212 &6592850944746432539
 SpriteRenderer:
   m_ObjectHideFlags: 0

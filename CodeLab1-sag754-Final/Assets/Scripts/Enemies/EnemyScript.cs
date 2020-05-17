@@ -9,8 +9,11 @@ public class EnemyScript : MonoBehaviour
     public float speed = 2;
     public float bulletSpeed = 5;
     public int health = 120;
+    public int damage = 100;
+
     public GameObject enemyBullet;
     public GameObject deathEffect;
+    public GameObject hitEffect;
     
     public PlayerController target;
     Vector2 aimDirection;
@@ -47,12 +50,6 @@ public class EnemyScript : MonoBehaviour
 
     void Fire()
     {
-        //Instantiate<GameObject>(enemyBullet);
-        //target = GameObject.FindObjectOfType<PlayerController>();
-        //aimDirection = (target.transform.position - transform.position).normalized * bulletSpeed;
-        //rb.velocity = new Vector2(aimDirection.x, aimDirection.y)
-        
-
         if(target != null)
         {
             GameObject newBullet = Instantiate<GameObject>(enemyBullet, transform.position, Quaternion.identity); //create a new bullet prefab
@@ -61,9 +58,6 @@ public class EnemyScript : MonoBehaviour
 
             newBullet.GetComponent<Rigidbody2D>().velocity = dir * 5;
         }
-        //Vector2 newPos = transform.position;
-        //newPos.x -= 0.7f;
-        //newBullet.transform.position = newPos; //put the bullet below the enem
     }
 
     public void TakeDamage(int damage)
@@ -80,5 +74,21 @@ public class EnemyScript : MonoBehaviour
     {
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    void OnTriggerEnter2D(Collider2D hitInfo)
+    {
+        if (hitInfo.gameObject.tag == "Player")
+        {
+            PlayerController player = hitInfo.GetComponent<PlayerController>();
+            if (player != null)
+            {
+                player.TakeDamage(damage);
+            }
+
+            Instantiate(hitEffect, transform.position, transform.rotation);
+
+            Destroy(gameObject);
+        }
     }
 }
