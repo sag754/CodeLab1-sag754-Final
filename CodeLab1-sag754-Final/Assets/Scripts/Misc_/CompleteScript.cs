@@ -12,6 +12,7 @@ public class CompleteScript : MonoBehaviour
 
     void Start()
     {
+        Destroy(GameObject.FindWithTag("Enemy"));
         GameManager.points = 0;
         Invoke("ReloadGame", 7f);
     }
